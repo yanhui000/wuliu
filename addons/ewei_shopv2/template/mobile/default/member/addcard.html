@@ -1,0 +1,60 @@
+{template '_header'}
+<style>
+    .fui-header{ background-color: #fff!important; }
+    .fui-header a.back:before{ border-color: #FA871D!important }
+    .fui-header .title{ color: #000!important }
+    .fui-cell-group .fui-cell .fui-cell-icon{
+        width: auto;
+    }
+    .fui-cell-group .fui-cell .fui-cell-icon img{
+        width: 2rem;
+        height: 2rem;
+    }
+    .fui-cell-group .fui-cell.no-border{
+        padding-top: 0;
+    }
+    .fui-cell-group .fui-cell.no-border .fui-cell-info{
+        font-size: .6rem;
+        color: #999;
+    }
+    .fui-cell-group .fui-cell.applyradio  .fui-cell-info{
+        line-height: normal;
+    }
+    .card{margin: 0.75rem 0.6rem 0.65rem;position: relative;}
+    .cardname{ overflow: hidden; width: 100%; position: absolute; top: 0; z-index: 10}
+    .cardname1{ float: left; width: 3rem; height: 3rem; line-height: 3rem; text-align: center;}
+    .cardname1 img{width: 2rem; vertical-align: middle; }
+    .cardname2{ float: left; padding: 0.5rem 0;}
+    .cardname2 p{height: 1rem;line-height: 1rem; color: #fff}
+    .cardname2 .p1{ font-size: .7rem }
+    .cardname2 .p2{ font-size: .6rem }
+    .khao{position: absolute; bottom: 0.6rem; right: .6rem; color: #fff; font-size: .8rem}
+</style>
+<div class='fui-page  fui-page-current'>
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">银行卡
+        </div>
+        <div class="fui-header-right">&nbsp;</div>
+    </div>
+    <div class='fui-content'>
+    	<div class="card">
+    		<img src="../addons/ewei_shopv2/template/mobile/default/static/images/ybg1.png"  style="width: 100%" />
+    		<div class="cardname">
+    			<div class="cardname1"><img src="../addons/ewei_shopv2/template/mobile/default/static/images/psd.png"/></div>
+    			<div  class="cardname2">
+    				<p class="p1">招商银行</p>
+    				<p class="p2">储蓄卡</p>
+    			</div>
+    		</div>
+    		<div class="khao"><p>****  ****  ****  0000</p></div>
+    	</div>
+        <a id='btn-next' class='btn btn-danger block mtop' style="position: absolute; bottom: 0; width: 94%">添加银行卡</a>
+        </div>
+    </div>
+</div>
+
+{template '_footer'}
+<!--913702023503242914-->

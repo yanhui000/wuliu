@@ -1,0 +1,88 @@
+{template '_header'}
+<script type="text/javascript">
+    $(function(){
+        var $lis=$(".wenti li");
+        $lis.click(function(){
+	        $(this).addClass("current").siblings().removeClass("current");
+	        var index=$lis.index(this);
+	        console.log(index);
+	        $(".qiehuan section").eq(index).show().siblings().hide();
+    	});
+    })
+</script>
+<style type="text/css">
+	.yicang{display: none;}
+	.fui-header{ background-color: #fff!important; }
+	.fui-header a.back:before{ border-color: #FA871D!important }
+	.fui-header .title{ color: #000!important }
+	.baoTop{ margin: 0.75rem 0.6rem 0.65rem; background-color: #fff;padding: 0.75rem 0.6rem; color: #aaa}
+	.chongti{ overflow: hidden; padding: .4rem 0}
+	.chongtip1{ float: left; padding: 0rem 0; color: #FF7B52; font-size: 1.2rem; font-weight: bold;height: 1.6rem; line-height: 1.6rem}
+	.chongtip2{ float: right; }
+	.chongtip2 a{ background-color: #fff; border:1px solid #FB861D; color: #F17208; font-size: .8rem; padding:.0rem .8rem; margin-left: .4rem; display: inline-block; border-radius: .2rem; height: 1.6rem; line-height: 1.6rem}
+	.black{ color: #000 }
+	.fui-cell-group .fui-cell .fui-cell-remark:after{border-color:#fff!important}
+	.fu{ overflow: hidden; background-color: #fff;margin: 0.75rem 0.6rem 0.65rem;  }
+	.fu dl{ float: left; width: 33.33%; text-align: center; border-bottom: 1px solid #ebebeb;border-right: 1px solid #ebebeb; padding: .8rem 0}
+	.fu dl img{ width: 1.6rem }
+	.fu dl dd{ color: #333 }
+</style>
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/coupon-new.css?v=2017030302">
+<div class='fui-page  fui-page-current coupon-my-page'>
+    <div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back"></a>
+		</div>
+		<div class="title">物流钱包</div> 
+		<div class="fui-header-right"><a href="{php echo mobileUrl('member')}" style="color: #333"><span class="icon icon-my" style="font-size: 28px"></span></a></div>
+    </div>
+	<div class='fui-content navbar'>
+		<div class="baoTop">
+			<p>可用资产(元)</p>
+			<div class="chongti">
+				<p class="chongtip1">0.00</p>
+				<p class="chongtip2">
+					<a href="{php echo mobileUrl('member/recharge')}">充值</a>
+					<a href="{php echo mobileUrl('member/tixian')}">提现</a>
+				</p>
+			</div>
+			<p>冻结资产(元)<span class="black">0.00</span></p>
+		</div>
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{php echo mobileUrl('member/renzheng')}" style="background-color: #FB861D; color: #fff">
+				<div class="fui-cell-text" style="color: #fff; font-size: .8rem"><p>实名认证有惊喜</p></div>
+				<div class="fui-cell-remark" style="color: #fff;font-size: .8rem">
+					去认证
+				</div>
+			</a>
+		</div>
+		<div class="fu">
+			<a href="{php echo mobileUrl('member/addcard')}">
+				<dl>
+					<dt><img src="../addons/ewei_shopv2/template/mobile/default/static/images/qianbao1.png" /></dt>
+					<dd>银行卡</dd>
+				</dl>
+			</a>
+			<a href="{php echo mobileUrl('member/kaquan')}">
+				<dl>
+					<dt><img src="../addons/ewei_shopv2/template/mobile/default/static/images/qianbao2.png" /></dt>
+					<dd>卡券包</dd>
+				</dl>
+			</a>
+			<a href="{php echo mobileUrl('member/zhangdan')}">
+				<dl style="border-right: none;">
+					<dt><img src="../addons/ewei_shopv2/template/mobile/default/static/images/qianbao3.png" /></dt>
+					<dd>账单详情</dd>
+				</dl>
+			</a>
+			<a href="">
+				<dl>
+					<dt><img src="../addons/ewei_shopv2/template/mobile/default/static/images/qianbao4.png" /></dt>
+					<dd>货主会员贷</dd>
+				</dl>
+			</a>
+		</div>
+	</div>
+</div>
+{template '_footer'}
+<!--NDAwMDA5NzgyNw==-->

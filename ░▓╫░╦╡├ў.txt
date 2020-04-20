@@ -1,0 +1,15 @@
+安装说明
+
+直接解压安装
+服务器推荐配置：Linux+nginx+php5.6+mysql5.5；
+
+把文件解压后放到站点根目录，
+
+导入数据库：nuoyuan172.sql   替换域名：http://w.wq172 (先替换再导入)
+
+更改数据库配置文件：data/config.php
+
+$config['db']['master']['host'] = '127.0.0.1';        //linux系统换成 localhost
+$config['db']['master']['username'] = 'root';         //数据库用户名
+$config['db']['master']['password'] = 'root';         //数据库密码
+$config['db']['master']['database'] = 'nuoyuan172';   //数据库名

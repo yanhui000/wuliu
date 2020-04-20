@@ -1,0 +1,302 @@
+{template '_header'}
+<style>
+    .fui-header{ background-color: #fff!important; }
+    .fui-header a.back:before{ border-color: #FA871D!important }
+    .fui-header .title{ color: #000!important }
+    .fui-cell-group .fui-cell .fui-cell-icon{
+        width: auto;
+    }
+    .fui-cell-group .fui-cell .fui-cell-icon img{
+        width: 2rem;
+        height: 2rem;
+    }
+    .fui-cell-group .fui-cell.no-border{
+        padding-top: 0;
+    }
+    .fui-cell-group .fui-cell.no-border .fui-cell-info{
+        font-size: .6rem;
+        color: #999;
+    }
+    .fui-cell-group .fui-cell.applyradio  .fui-cell-info{
+        line-height: normal;
+    }
+    .container {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: #999;
+    opacity: 0.5;
+     display: none; 
+    z-index: 10;
+}
+.fui-cell-group .fui-cell .fui-input{ text-align: right; }
+.fui-checkbox.fui-checkbox-danger:checked, .fui-radio.fui-radio-danger:checked {
+    background-color: #FA6439!important;
+    border: 1px solid #FA6439!important;
+}
+.bot{ width: 100%; position: fixed; bottom: 0; background-color: #fff}
+.bot a{ width: 50%; float: left; text-align: center; background-color: #FA871D; color: #fff;font-size: .8rem; line-height: 2.4rem; height: 2.4rem}
+</style>
+<script type="text/javascript">
+    $(function(){
+         $('.dian2').click(function(){
+            $('.chexingdiv').show();
+            $('.container').show();
+        });
+        $('.container').click(function(){
+            $('.chexingdiv').hide();
+            $(this).hide();
+        });
+        $('.quxiao').click(function(){
+            $('.chexingdiv').hide();
+            $('.container').hide();
+        });
+        $('.quren2').click(function(){
+             $('.chexingdiv').hide();
+            $('.container').hide();
+            var a=$('.wenben').val();
+            console.log(a);
+            var obj = $("input[name='zhizhao']");
+            var s='';
+            for(var i=0;i<obj.length;i++){
+                if(obj[i].checked)
+                    s +=obj[i].value+',';
+            }
+             var zhi=s+a;
+           $('.dian2').val(zhi);
+           
+
+
+
+            // $('.dian1').val(a);
+        });
+        var cb1 = $('[name="chechang"]');
+        cb1.change(function () {
+        if (this.checked && cb1.filter(':checked').length > 3) this.checked = false;
+        });
+        var cb2 = $('[name="chexing"]');
+        cb2.change(function () {
+        if (this.checked && cb2.filter(':checked').length > 3) this.checked = false;
+        });
+ 
+});
+</script>
+<div class='fui-page  fui-page-current'>
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">确认运单
+        </div>
+        <div class="fui-header-right">&nbsp;</div>
+    </div>
+    <div class='fui-content'>
+         <div class="container"></div>
+         <div class="fui-cell-group" style="margin: .6rem; border-radius: .4rem">
+            <div class="fui-cell">
+                <div class="fui-cell-label">装货时间</div>
+                <div class="fui-cell-info c000"><input type="text" id="" name="" value="" placeholder="装货时间，必填" class="fui-input"></div>
+                <div class="fui-cell-remark down"></div>
+            </div>
+        </div>
+        <div class="fui-cell-group" style="margin: .6rem; border-radius: .4rem">
+            <div class="fui-cell">
+                <div class="fui-cell-label" style="width: 5.25rem;">服务要求和备注</div>
+                <div class="fui-cell-info c000"><input type="text" id="" name="" value="" placeholder="请输入服务要求和备注" class="fui-input dian2" style="height: auto;"></div>
+                <div class="fui-cell-remark down"></div>
+            </div>
+            <!-- <div class="cailiao">
+                <div class="cailiao1">
+                    <input type="checkbox" name="zhizhao" id="zhizhao1" checked="" value="到付">
+                    <label for="zhizhao1">到付</label>
+                </div>
+                <div class="cailiao1">
+                    <input type="checkbox" name="zhizhao" id="zhizhao2" value="三不超">
+                    <label for="zhizhao2">三不超</label>
+                </div>
+                <div class="cailiao1">
+                    <input type="checkbox" name="zhizhao" id="zhizhao3" value="需雨布">
+                    <label for="zhizhao3">需雨布</label>
+                </div>
+                <div class="cailiao1">
+                    <input type="checkbox" name="zhizhao" id="zhizhao4" value="全部现金">
+                    <label for="zhizhao4">全部现金</label>
+                </div>
+                <div class="cailiao1">
+                    <input type="checkbox" name="zhizhao" id="zhizhao5" value="随时装">
+                    <label for="zhizhao5">随时装</label>
+                </div>
+                <div class="cailiao1">
+                    <input type="checkbox" name="zhizhao" id="zhizhao6" value="高价急走">
+                    <label for="zhizhao6">高价急走</label>
+                </div>
+                <div class="cailiao1">
+                    <input type="checkbox" name="zhizhao" id="zhizhao7" value="需回单">
+                    <label for="zhizhao7">需回单</label>
+                </div>
+            </div> -->
+        </div>
+        <div class="fui-cell-group" style="margin: .6rem; border-radius: .4rem">
+            <div class="fui-cell applyradio" style="padding: 0rem 0.6rem;">
+                <div class="fui-cell-info" style="color: #666;padding: 0.75rem 0rem 0.65rem;">
+                    开具专用发票增值税<span style="background-color: #F3F3F3; padding: .3rem; margin-left: .6rem">满3000送50</span>
+                </div>
+                <div class="fui-cell-remark noremark"><input name="1" type="checkbox" class="fui-radio fui-radio-danger" checked="cheched "></div>
+            </div>
+             <div class="fui-cell applyradio" style="padding: 0rem 0.6rem;">
+                <div class="fui-cell-info" style="color: #666;padding: 0.75rem 0rem 0.65rem;">
+                    购买货运险<span style="background-color: #F3F3F3; padding: .3rem; margin-left: .6rem">满30减3元</span>
+                </div>
+                <div class="fui-cell-remark noremark"><input name="1" type="checkbox" class="fui-radio fui-radio-danger"></div>
+            </div>
+        </div>
+        <div class="fui-cell-group" style="margin: .6rem; border-radius: .4rem">
+            <div class="fui-cell applyradio" style="padding: 0rem 0.6rem;">
+                <div class="fui-cell-remark noremark"><input name="1" type="checkbox" class="fui-radio fui-radio-danger" checked="cheched "></div>
+                <div class="fui-cell-info" style="color: #666;padding: 0.75rem 0rem 0.65rem;">
+                    我已阅读并同意<a href="#" style="color: #2D98D6">《货物运输协议》</a>等相关协议
+                </div>
+            </div>
+             <div class="fui-cell applyradio" style="padding: 0rem 0.6rem;">
+                <div class="fui-cell-remark noremark"><input name="1" type="checkbox" class="fui-radio fui-radio-danger"></div>
+                <div class="fui-cell-info" style="color: #666;padding: 0.75rem 0rem 0.65rem;">
+                    存为常发货源
+                </div>
+            </div>
+        </div>
+        <style type="text/css">
+                .cailiao{overflow: hidden; width: 100%; padding:.4rem .4rem .2rem}
+                .cailiao1{ float: left; width: 21%; margin:1% 2%}
+                .cailiao1 input{display: none;}
+                .cailiao1 label{ font-size: 0.7rem; width: 100%; text-align: center; display: block; padding:.2rem 0;border-radius: .4rem; background-color: #F3F3F3;border: 1px solid #F3F3F3; }
+                .cailiao1 input:checked+label{color: #D76C37; border: 1px solid #D76C37; background-color: #FFEFE2}
+                .yicang{display: none;}
+                .tex{border: 1px solid #747474!important; height: 8rem; padding: .6rem}
+                .zhxie{ background-color: #fff; height: 12rem; position: absolute; bottom: 0; width: 100%; display: none; z-index: 12}
+                 .chexingdiv{ background-color: #fff;  position: absolute; bottom: 0; width: 100%;  z-index: 12; padding-bottom: 1rem; display: none;}
+                .lab{ margin:0 2% }
+                .lab span{ color: #A0A0A0; font-size: .65rem }
+            </style>
+            <div class="chexingdiv">
+                <div class="fui-picker-header" style="border-bottom: 1px solid #ebebeb;">
+                    <div class="left "><a href="javascript:" class="text-cancel fui-picker-cancel quxiao">取消</a></div>
+                    <div class="center" style="font-weight: bold;">服务要求和备注</div>
+                    <div class="right"><a href="javascript:" class="text-success fui-picker-confirm quren2" style="color: #D76C37">确定</a></div>
+                </div>
+                <div class="fui-cell-group">
+                    <div class="fui-cell">
+                <textarea placeholder="请输入备注,最多50个字" style="height: 5rem;
+    padding: .6rem; background-color: #F8F8F8" class="wenben"></textarea>
+            </div>
+                </div>
+                <div class="cailiao">
+                    <p class="lab">特殊要求</p>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao2" value="三不超">
+                        <label for="zhizhao2">三不超</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao3" value="需雨布">
+                        <label for="zhizhao3">需雨布</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao8" value="有禁区">
+                        <label for="zhizhao8">有禁区</label>
+                    </div>
+                     <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao7" value="需回单">
+                        <label for="zhizhao7">需回单</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao9" value="需押车">
+                        <label for="zhizhao9">需押车</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao10" value="禁止配货">
+                        <label for="zhizhao10">禁止配货</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao11" value="全程高速">
+                        <label for="zhizhao11">全程高速</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao12" value="派人跟车">
+                        <label for="zhizhao12">派人跟车</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao5" value="随时装">
+                        <label for="zhizhao5">随时装</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao6" value="高价急走">
+                        <label for="zhizhao6">高价急走</label>
+                    </div>
+                                        <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao13" value="绿通">
+                        <label for="zhizhao13">绿通</label>
+                    </div>
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao1" value="到付">
+                        <label for="zhizhao1">到付</label>
+                    </div>
+                    
+                    <div class="cailiao1">
+                        <input type="checkbox" name="zhizhao" id="zhizhao4" value="全部现金">
+                        <label for="zhizhao4">全部现金</label>
+                    </div>
+                </div>
+            </div>
+            <div class="bot">
+                <div class="fui-cell-group" style="padding: .4rem 0 .2rem; margin: .4rem 0">
+                    <div class="fui-cell" style="margin: 0 4%; padding:0 .4rem;background-color: #F3F3F3;border-radius: .4rem;">
+                        <div class="fui-cell-label">期望运费</div>
+
+                        <div class="fui-cell-info c000" style="padding: 0.4rem 0.6rem; position: relative;"><input type="tel" id="" name="" value="" placeholder="请输入运费" class="fui-input zhanchechang" style="text-align: left;"><span style="position: absolute; right: 0; padding: .2rem">元</span></div>
+                    </div>
+                </div>
+            <a style="background-color: #F8F8F8; color: #333">指定司机</a>
+            <a>下单</a>
+            <div style="clear: both;"></div>
+        </div>   
+
+    </div>
+    </div>
+</div>
+<script language='javascript' type="text/javascript">
+    require(['biz/member/address'], function (modal) {
+        modal.initPost({new_area: {php echo $new_area}, address_street: {php echo $address_street}});
+    });
+    </script>
+    <script language='javascript' type="text/javascript">
+        require(['biz/member/address2'], function (modal) {
+            modal.initPost({new_area: {php echo $new_area}, address_street: {php echo $address_street}});
+        });
+    </script>
+    <script language='javascript' type="text/javascript">
+        require(['biz/member/address3'], function (modal) {
+            modal.initPost({new_area: {php echo $new_area}, address_street: {php echo $address_street}});
+        });
+    </script>
+    <script language='javascript' type="text/javascript">
+        require(['biz/member/address4'], function (modal) {
+            modal.initPost({new_area: {php echo $new_area}, address_street: {php echo $address_street}});
+        });
+    </script>
+    <script language='javascript'>
+        require(['biz/member/address'], function (modal) {
+        modal.initList();
+    });</script>
+    <script language='javascript'>
+        require(['biz/member/address2'], function (modal) {
+        modal.initList();
+    });</script>
+    <script language='javascript'>
+        require(['biz/member/address3'], function (modal) {
+        modal.initList();
+    });</script>
+    <script language='javascript'>
+        require(['biz/member/address4'], function (modal) {
+        modal.initList();
+    });</script>
+{template '_footer'}
+<!--913702023503242914-->
