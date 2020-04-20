@@ -58,7 +58,10 @@ class Level_EweiShopV2Page extends WebPage
 		global $_W;
 		global $_GPC;
 		$id = trim($_GPC['id']);
+<<<<<<< HEAD
 //		echo $id;exit;
+=======
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
 		$set = m('common')->getSysset();
 		$setdata = pdo_fetch('select * from ' . tablename('ewei_shop_sysset') . ' where uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid']));
 

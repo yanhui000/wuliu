@@ -65,6 +65,7 @@ class Index_EweiShopV2Page extends WebPage
 		}
 		else if (cv('sysset.notice_redis')) {
 			header('location: ' . webUrl('sysset/notice_redis'));
+<<<<<<< HEAD
 		}else if (cv('sysset.freightset ')) {
 			header('location: ' . webUrl('sysset/freightset'));
 		}else if(cv('sysset.soso ')){
@@ -250,6 +251,11 @@ class Index_EweiShopV2Page extends WebPage
 			} else {
 				show_json(1);
 			}
+=======
+		}
+		else {
+			header('location: ' . webUrl());
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
 		}
 	}
 
@@ -293,12 +299,19 @@ class Index_EweiShopV2Page extends WebPage
 		}
 
 		$data = m('common')->getSysset('share');
+<<<<<<< HEAD
 		include $this->template();    //view00
+=======
+		include $this->template();
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
 	}
 
 	public function settemplateid()
 	{
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
 		global $_W;
 		global $_GPC;
 		$tag = $_GPC['tag'];
@@ -604,6 +617,10 @@ class Index_EweiShopV2Page extends WebPage
 			plog('sysset.trade.edit', '修改系统设置-交易设置');
 			show_json(1);
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
 		$areas = m('common')->getAreas();
 		$data = m('common')->getSysset('trade');
 		$area_set = m('util')->get_area_config_set();

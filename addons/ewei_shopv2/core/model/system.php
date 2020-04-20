@@ -762,10 +762,19 @@ class System_EweiShopV2Model
 					array(
 						'title' => '物流',
 						'items' => array(
+<<<<<<< HEAD
 							array('title' => '全网通设置', 'route' => 'wap'),
 							array('title' => '运费设置', 'route' => 'freightset')
 							)
 						
+=======
+						//	array('title' => '基础设置', 'route' => 'shop'),
+						
+					
+					
+							array('title' => '全网通设置', 'route' => 'wap', 'iscom' => 'wap', 'permcom' => 'sms')
+							)
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
 						),
 					array(
 						'title' => '交易',

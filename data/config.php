@@ -5,7 +5,11 @@ $config = array();
 
 $config['db']['master']['host'] = '127.0.0.1';
 $config['db']['master']['username'] = 'root';
+<<<<<<< HEAD
 $config['db']['master']['password'] = 'root';
+=======
+$config['db']['master']['password'] = '2134b571476a3757';
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
 $config['db']['master']['port'] = '3306';
 $config['db']['master']['database'] = 'wuliu';
 $config['db']['master']['charset'] = 'utf8';

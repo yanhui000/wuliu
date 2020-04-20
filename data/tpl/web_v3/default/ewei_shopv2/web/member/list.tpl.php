@@ -87,9 +87,15 @@
     </form>
 
     <?php  if(empty($list)) { ?>
+<<<<<<< HEAD
     <div class="panel panel-default">
         <div class="panel-body empty-data">未查询到相关数据</div>
     </div>
+=======
+        <div class="panel panel-default">
+            <div class="panel-body empty-data">未查询到相关数据</div>
+        </div>
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
     <?php  } else { ?>
         <div class="row">
             <div class="col-md-12">

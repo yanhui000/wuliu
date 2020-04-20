@@ -12,5 +12,9 @@
 $config['db']['master']['host'] = '127.0.0.1';        //linux系统换成 localhost
 $config['db']['master']['username'] = 'root';         //数据库用户名
 $config['db']['master']['password'] = 'root';         //数据库密码
+<<<<<<< HEAD
 $config['db']['master']['database'] = 'nuoyuan172';   //数据库名
 
+=======
+$config['db']['master']['database'] = 'nuoyuan172';   //数据库名
+>>>>>>> 2d252534b3255ed7eb0b2e27a5b599c3e2e49e3c
