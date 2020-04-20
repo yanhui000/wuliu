@@ -1,0 +1,35 @@
+<div class="fui-navbar">
+
+    <a href="{php echo mobileUrl('member/fahuo')}" class="external nav-item {if $_W['routes']=='member.fahuo'}active{/if}">
+        <span class="icon icon-search2"></span>
+        <span class="label">发货</span>
+    </a>
+    
+    {if intval($_W['shopset']['category']['level'])!=-1}
+  <!--  <a href="{php echo mobileUrl('member/callrecords')}" class="external nav-item {if $_W['routes']=='member.callrecords'}active{/if}" >
+        <span class="icon icon-ringpause"></span>
+        <span class="label">通话记录</span>
+    </a>-->
+    {else}
+    <a href="{php echo mobileUrl('goods')}" class="external nav-item {if $_W['routes']=='goods'}active{/if}" >
+        <span class="icon icon-list"></span>
+        <span class="label">全部商品</span>
+    </a>
+    {/if}
+    
+    {if !empty($commission)}
+    <a href="{php echo mobileUrl('member/fahuo')}" class="external nav-item {if $_W['routes']=='member.fahuo'}active{/if}" style="bottom: .6rem">
+        <span class="icon icon-form" style="padding: .6rem; background-color: #F5F5F5; border-radius: 50%; border:2px solid #fff"></span>
+        <span class="label" style="top:.5rem">发货</span>
+    </a>
+    {/if}
+    <a href="{php echo mobileUrl('order')}" class="external nav-item {if $_W['routes']=='order'}active{/if}" id="menucart">
+        <span class="icon icon-dingdan1"></span>
+        <span class="label">订单</span>
+        <!-- {if $cartcount>0}<span class="badge">{$cartcount}</span>{/if} -->
+    </a>
+    <a href="{php echo mobileUrl('member')}" class="external nav-item {if $_W['routes']=='member'}active{/if}">
+        <span class="icon icon-person2"></span>
+        <span class="label">我的</span>
+    </a>
+</div>

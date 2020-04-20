@@ -1,0 +1,75 @@
+{template '_header'}
+<style>
+     .fui-list-group-title.lineblock2:before{
+        content: "";
+        position: absolute;
+        left: .5rem;
+        bottom: 0;
+        right: .5rem;
+        height: 1px;
+        border-top: 1px solid #ebebeb;
+        -webkit-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.5);
+        -ms-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+    .fui-header{ background-color: #fff!important; }
+    .fui-header a.back:before{ border-color: #FA871D!important }
+    .fui-header .title{ color: #000!important }
+    .tanchu{ display: none; position: fixed; z-index: 10; width: 100%; background-color: #fff; top: 0; bottom: 0 }
+    .yam{width:12rem; margin: 4.2rem auto; text-align: center; overflow: hidden;}
+    .yamp1{ font-size: 1rem; font-weight: bold; margin: .2rem 0 }
+    .yamp2{color: #545454;}
+    #wrap{width: 12rem; overflow: hidden; margin-top: 1.6rem}
+    #wrap input{ width: 2.4rem; height: 2.4rem; margin-right: .8rem; float: left; border:1px solid #ccc; border-radius: .4rem; text-align: center; font-size: .8rem}
+    .noyanz{ width: 100%; overflow: hidden; margin-top: .4rem }
+    .span1{ float: left; color: #ccc }
+    .span2{float: right;}
+</style>
+<div class='fui-page order-list-page'style="background-color: #fff">
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back" ></a>
+        </div>
+        <div class="title"></div>
+        <div class="fui-header-right">
+          <!--   <a class="icon icon-delete external" style="color: #333">添加</a> -->
+        </div>
+    </div>
+	<div class='fui-content' style="top: 2.2rem">
+        <div class="yam">
+            <p class="yamp1">输入短信验证码</p>
+            <p class="yamp2">验证码已发送到您的手机13256478923</p>
+            <form class="yamfor">
+                <div id="wrap">
+                    <input type="number"  autofocus="autofocus" />
+                    <input type="number" />
+                    <input type="number" />
+                    <input type="number" style="margin-right: 0" />
+                </div>
+            </form>
+            <p class="noyanz"><span class="span1">4位验证码</span><span class="span2"><a href="#">收不到验证码点这里</a></span></p>
+        </div>  
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        var txts = $("#wrap input");
+        for (var i = 0; i < txts.length; i++) {
+            var t = txts[i];
+            t.index = i;
+            t.setAttribute("readonly", true);
+            t.onkeyup = function() {
+                this.value = this.value.replace(/^(.).*$/, '$1');
+                var next = this.index + 1;
+                if (next > txts.length - 1) return;
+                txts[next].removeAttribute("readonly");
+                txts[next].focus();
+            }
+        }
+        txts[0].removeAttribute("readonly");
+    });
+</script>
+{template '_footer'}

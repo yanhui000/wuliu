@@ -1,0 +1,94 @@
+<?php defined('IN_IA') or exit('Access Denied');?><?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('_header', TEMPLATE_INCLUDEPATH)) : (include template('_header', TEMPLATE_INCLUDEPATH));?>
+<script type="text/javascript">
+    $(function(){
+        var $lis=$(".wenti li");
+        $lis.click(function(){
+	        $(this).addClass("current").siblings().removeClass("current");
+	        var index=$lis.index(this);
+	        console.log(index);
+	        $(".qiehuan section").eq(index).show().siblings().hide();
+    	});
+    })
+</script>
+<style type="text/css">
+	.yicang{display: none;}
+	.fui-header{ background-color: #fff!important; }
+	.fui-header a.back:before{ border-color: #FA871D!important }
+	.fui-header .title{ color: #000!important }
+	.fui-tab.fui-tab-danger a.active {color: #4A9DFA!important;border-color: #4A9DFA!important}
+	.wenti{ overflow: hidden;padding: 0.75rem 0.6rem 0.65rem; border-bottom:1px solid #ebebeb}
+	.wenti li{ float: left; width: 25%; list-style: none;}
+	.wenti li.current{color: #FA871D}
+	.wenyilie{ overflow: hidden; padding: 0.55rem 0.6rem 0.55rem }
+	.wenyilie a{ float: left; width: 100% ; color: #B3B2B8; padding: .25rem 0}
+	.bot{ width: 100%; position: fixed; bottom: 0;}
+	.bot a{ width: 50%; float: left; text-align: center; background-color: #FA871D; color: #fff;font-size: .8rem; line-height: 2.7rem; height: 2.7rem}
+	.out-div {background-color: #FE0000;width: 90px;border-radius: 5px;position: absolute; color: #fff; text-align: center; padding: .3rem 0; font-size: .5rem; top: -35%; left: 25%}
+.arrow {width: 0px;height: 0px;border-top: 12px solid;border-right: 12px solid transparent;position: absolute;border-bottom-color: #EAEAEA; bottom: -10px; color: #f00}
+/*.arrow2 {width: 0px;height: 0px;border-left: 14px solid transparent;border-bottom: 14px solid;border-right: 14px solid transparent;position: absolute;margin-left: -14px;margin-top: 3px;border-bottom-color: #fff;}*/
+</style>
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/coupon-new.css?v=2017030302">
+<div class='fui-page  fui-page-current coupon-my-page' style="background-color: #fff">
+    <div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back"></a>
+		</div>
+		<div class="title">客户服务</div> 
+		<div class="fui-header-right">&nbsp;</div>
+    </div>
+	<div class='fui-content navbar'>
+		<div class="fui-cell-group">
+            <a class="fui-cell" href="">
+				<div class="fui-cell-text"><p>常见问题</p></div>
+				<div class="icon icon-search2 fui-cell-remark2"></div>
+			</a>
+        </div>
+        <ul class="wenti">
+    		<li class="current">软件使用</li>
+    		<li>支付交易</li>
+    		<li>登陆异常</li>
+    		<li>修改个人信息</li>
+        </ul>
+		<div class="qiehuan">
+			<section>
+				<div class="wenyilie">
+					<a href="#">问题问题问题问题问题问题?</a>
+					<a href="#">问题问题问题问题问题问题?</a>
+					<a href="#">问题问题问题问题问题问题?</a>
+					<a href="#">问题问题问题问题问题问题?</a>	
+				</div>
+			</section>
+			<section class="yicang">
+				<div class="wenyilie">
+					<a href="#">2问题问题问题问题问题问题?</a>
+					<a href="#">问题问题问题问题问题问题?</a>				
+				</div>
+			</section>
+			<section class="yicang">
+				<div class="wenyilie">
+					<a href="#">3问题问题问题问题问题问题?</a>
+					<a href="#">问题问题问题问题问题问题?</a>				
+				</div>
+			</section>
+			<section class="yicang">
+				<div class="wenyilie">
+					<a href="#">4问题问题问题问题问题问题?</a>
+					<a href="#">问题问题问题问题问题问题?</a>				
+				</div>
+			</section>
+		</div>
+		<div class="bot">
+			<a>在线客服</a>
+			<div class="out-div" id="xianshi">
+		        <div class="arrow" >
+<!-- 		        	<div class="arrow2"></div> -->
+		        </div>
+		       处理速度更快
+		    </div>
+			<a style="background-color: #F8F8F8; color: #333">电话客服</a>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</div>
+<?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('_footer', TEMPLATE_INCLUDEPATH)) : (include template('_footer', TEMPLATE_INCLUDEPATH));?>
+<!--NDAwMDA5NzgyNw==-->

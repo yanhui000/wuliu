@@ -1,0 +1,108 @@
+{template '_header'}
+<script type="text/javascript">
+    $(function(){
+        var $lis=$("#cateTab a");
+        $lis.click(function(){
+	        $(this).addClass("active").siblings().removeClass("active");
+	        var index=$lis.index(this);
+	        console.log(index);
+	        $(".qiehuan section").eq(index).show().siblings().hide();
+    	});
+    })
+</script>
+<style type="text/css">
+	.fui-header{ background-color: #fff!important; }
+	.fui-header a.back:before{ border-color: #FA871D!important }
+	.fui-header .title{ color: #000!important }
+	.shuoming{padding: 0.75rem 0.6rem 0.65rem; background-color: #FFF3EB; color: #FB5925;}
+	.fui-cell-group{margin: 0.5rem 0.6rem!important}
+	[class*="icheck-"] > input:first-child + label::before, [class*="icheck-"] > input:first-child + input[type="hidden"] + label::before{border-radius: 50%!important;border: 1px solid #569EE7!important; vertical-align: middle;}
+	.tu{ overflow: hidden; /*padding: 0.75rem 0.6rem 0.65rem;*/ margin-bottom: 1rem; text-align: center;}
+	.tuLe{ background-color: #fff; padding: .6rem 0; border-top: .6rem solid #f3f3f3}
+	.tu img{ width: 60% }
+	.tu p{ text-align: center; font-size: .75rem ; margin-bottom: .6rem}
+</style>
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/coupon-new.css?v=2017030302">
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/icheck-bootstrap.css">
+<div class='fui-page  fui-page-current coupon-my-page' style="background-color: #fff">
+    <div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back"></a>
+		</div>
+		<div class="title">身份认证</div> 
+		<div class="fui-header-right" ><a href="" style="color: #FA871D">联系客服</a></div>
+    </div>
+	<div class='fui-content'>
+		<p class="shuoming">信息仅用于平台审核,不会泄露给第三方</p>
+		<div class="tu">
+			<div class="tuLe">
+				<input type="file" name="file0" id="file0" multiple="multiple" style="display: none;" />
+    			<label for="file0" style="overflow: hidden; display: inline-block; margin-top: 2%">
+    				<p>上传本人头像</p>
+    				<img src="../addons/ewei_shopv2/template/mobile/default/static/images/psdren1.png" id="img2" class="psd"/>
+    			</label>
+    		</div>
+    		<div class="tuLe">
+    			<input type="file" name="file0" id="file0" multiple="multiple" style="display: none;" />
+    			<label for="file0" style="overflow: hidden; display: inline-block; margin-top: 2%">
+    				<p>上传本人身份证(人像面)</p>
+    				<img src="../addons/ewei_shopv2/template/mobile/default/static/images/psdren2.png" id="img2" class="psd"/>
+    			</label>
+    		</div>	
+		</div>
+  	<a id='btn-next' class='btn btn-danger block mtop' style="position: absolute; bottom: 0; width: 100%; margin: 0; padding: 0; border-radius: 0; background-color: #FF5C01; height: 2.6rem; line-height: 2.6rem; font-size: .8rem">提交审核</a>	
+	</div>
+</div>
+<script>    
+    $("#file0").change(function(){  
+      // getObjectURL是自定义的函数，见下面  
+      // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+      // ，但是这里只读取第一个   
+      var objUrl = getObjectURL(this.files[0]);  
+      // 这句代码没什么作用，删掉也可以  
+      // console.log("objUrl = "+objUrl) ;  
+      if (objUrl) {  
+        // 在这里修改图片的地址属性  
+        $("#img2").attr("src", objUrl);  
+      }  
+    }) ;  
+    $("#file2").change(function(){  
+      // getObjectURL是自定义的函数，见下面  
+      // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+      // ，但是这里只读取第一个   
+      var objUrl = getObjectURL2(this.files[0]) ;  
+      // 这句代码没什么作用，删掉也可以  
+      // console.log("objUrl = "+objUrl) ;  
+      if (objUrl) {  
+        // 在这里修改图片的地址属性  
+        $("#img3").attr("src", objUrl) ;  
+      }  
+    }) ;  
+    //建立一個可存取到該file的url  
+    function getObjectURL(file) {  
+      var url = null ;   
+      // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+      if (window.createObjectURL!=undefined) { // basic  
+        url = window.createObjectURL(file) ;  
+      } else if (window.URL!=undefined) { // mozilla(firefox)  
+        url = window.URL.createObjectURL(file) ;  
+      } else if (window.webkitURL!=undefined) { // webkit or chrome  
+        url = window.webkitURL.createObjectURL(file) ;  
+      }  
+      return url ;  
+    }  
+    function getObjectURL2(file) {  
+      var url = null ;   
+      // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+      if (window.createObjectURL!=undefined) { // basic  
+        url = window.createObjectURL(file) ;  
+      } else if (window.URL!=undefined) { // mozilla(firefox)  
+        url = window.URL.createObjectURL(file) ;  
+      } else if (window.webkitURL!=undefined) { // webkit or chrome  
+        url = window.webkitURL.createObjectURL(file) ;  
+      }  
+      return url ;  
+    }  
+</script>
+{template '_footer'}
+<!--NDAwMDA5NzgyNw==-->

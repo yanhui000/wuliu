@@ -1,0 +1,338 @@
+{template '_header'}
+<div class="page-header">当前位置：<span class="text-primary">运费设置</span></div>
+
+<div class="page-content">
+
+    <form action="./index.php"  method="get" class="form-horizontal form-search" role="form">
+        <input type="hidden" name="c" value="site" />
+        <input type="hidden" name="a" value="entry" />
+        <input type="hidden" name="m" value="ewei_shopv2" />
+        <input type="hidden" name="do" value="web" />
+        <input type="hidden" name="r"  value="sysset.freightsetadd" />
+    </form>
+    <form action="" id="form" method="" class="form-horizontal form-validate" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$level['id']}" />
+
+    <div class="form-group">
+        <label class="col-lg control-label">起点</label>
+        <div class="col-sm-9 col-xs-12">
+            <select id="origin_first" name="f_origin_pro"  class="form-control tp_is_default" style="width:149px;">
+                <option value="0">请选择省</option>
+            </select><span id="origin_first_span" style="color: red"></span>
+            <select  id="origin_second"  name="f_origin_city" class="form-control tp_is_default" style="width:149px;">
+                <option value="0">请选择市</option>
+            </select><span id="origin_second_sapn" style="color: red"></span>
+            <select  id="origin_third" name="f_origin_county" class="form-control tp_is_default" style="width:149px;">
+                <option value="0">请选择县</option>
+            </select><span id="origin_third_span" style="color: red"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg control-label">终点</label>
+        <div class="col-sm-9 col-xs-12">
+            <select id="dest_first" name="f_des_pro"  class="form-control tp_is_default" style="width:149px;">
+                 <option value="0">请选择省</option>
+            </select><span id="dest_first_span" style="color: red"></span>
+            <select  id="dest_second"  name="f_des_city" class="form-control tp_is_default" style="width:149px;">
+                <option value="0">请选择市</option>
+            </select><span id="dest_second_span" style="color: red"></span>
+            <select  id="dest_third" name="f_des_county" class="form-control tp_is_default" style="width:149px;">
+                <option value="0">请选择县</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="col-lg control-label">运费</label>
+        <div class="col-sm-9 col-xs-12">
+            <div class="input-group fixsingle-input-group">
+                <input type="text" id="freight" name="f_freight" class="form-control" value="" /><span id="freight_span" style="color: red"></span>
+                <div class="input-group-addon">元/Kg</div>
+            </div>
+        </div>
+    </div>
+        <div class="form-group">
+            <label class="col-lg control-label"></label>
+            <div class="col-sm-9 col-xs-12">
+                <tr>
+                    <td><input value="LEAST_TIME" checked name="strategy" class="strategy" type="radio">最快捷模式</td>
+                    <td><input value="LEAST_FEE" name="strategy" class="strategy" type="radio">最经济模式</td>
+                    <td><input value="LEAST_DISTANCE" name="strategy" class="strategy" type="radio">最短距离模式</td>
+                </tr>
+                <input type="button" value="查看路线" id="map" class="btn btn-primary"/><span id="map_span" style="color: red"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg control-label"></label>
+            <div class="col-sm-9 col-xs-12">
+                <input type="button" value="提交" id="subbtn" class="btn btn-primary"  />
+            </div>
+        </div>
+</form>
+
+</div>
+<script src="static/js/layui.js"></script>
+<script type="text/javascript">
+    var initFrame = function(){
+        test.location='http://www.baidu.com';
+    };
+    //起点
+    $(function() {
+        //页面初始，加载所有的省份
+        $.ajax({
+            type: "get",
+            url: "index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.freightsetadd2",
+            data: {"type":1},
+            dataType: "json",
+            success: function(data) {
+                //遍历json数据，组装下拉选框添加到html中
+                $("#origin_first").html("<option value='0'>请选择省</option>");
+                $.each(data.result, function(i, item) {
+                    $("#origin_first").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                });
+            }
+        });
+
+        // 监听省select框
+        $("#origin_first").change(function() {
+            $('#origin_first_span').html('');
+            $('#sub_span').remove();
+            $.ajax({
+                type: "get",
+                url: "index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.freightsetadd2",
+                data: {"pnum": $(this).val(),"type":2},
+                dataType: "json",
+                success: function(data) {
+                    //遍历json数据，组装下拉选框添加到html中
+                    $("#origin_second").html("<option value='0'>请选择市</option>");
+                    $("#origin_third").html("<option value='0'>请选择县</option>");
+                    $("#map_span").html('');
+                    $.each(data.result, function(i, item) {
+                        $("#origin_second").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                    });
+                }
+            });
+        });
+
+        //监听市select框
+        $("#origin_second").change(function() {
+            $('#origin_second_sapn').html('');
+            $('#sub_span').remove();
+            $.ajax({
+                type: "get",
+                url: "index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.freightsetadd2&type=3",
+                data: {"cnum": $(this).val(),"type":3},
+                dataType: "json",
+                success: function(data) {
+                    //遍历json数据，组装下拉选框添加到html中
+                    $("#origin_third").html("<option value='0'>请选择县</option>");
+                    $.each(data.result, function(i, item) {
+                        $("#origin_third").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                    });
+                }
+            });
+        });
+
+    });
+
+    //监听开始县
+    $('#origin_third').change(function(){
+        $('#sub_span').remove();
+    })
+    //监听终点县
+    $('#dest_third').change(function(){
+        $('#sub_span').remove();
+    })
+    //终点
+    $(function() {
+        //页面初始，加载所有的省份
+        $.ajax({
+            type: "get",
+            url: "index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.freightsetadd2",
+            data: {"type":1},
+            dataType: "json",
+            success: function(data) {
+                //遍历json数据，组装下拉选框添加到html中
+                $("#dest_first").html("<option value='0'>请选择省</option>");
+                $.each(data.result, function(i, item) {
+                    $("#dest_first").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                });
+            }
+        });
+
+        // 监听省select框
+        $("#dest_first").change(function() {
+            $('#sub_span').remove();
+            $('#dest_first_span').html('');
+            $.ajax({
+                type: "get",
+                url: "index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.freightsetadd2",
+                data: {"pnum": $(this).val(),"type":2},
+                dataType: "json",
+                success: function(data) {
+                    //遍历json数据，组装下拉选框添加到html中
+                    $("#dest_second").html("<option value='0'>请选择市</option>");
+                    $("#dest_third").html("<option value='0'>请选择县</option>");
+                    $("#map_span").html('');
+                    $.each(data.result, function(i, item) {
+                        $("#dest_second").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                    });
+                }
+            });
+        });
+
+        //监听市select框
+        $("#dest_second").change(function() {
+            $('#sub_span').remove();
+            $('#dest_second_span').html('');
+            $.ajax({
+                type: "get",
+                url: "index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.freightsetadd2&type=3",
+                data: {"cnum": $(this).val(),"type":3},
+                dataType: "json",
+                success: function(data) {
+                    //遍历json数据，组装下拉选框添加到html中
+                    $("#dest_third").html("<option value='0'>请选择县</option>");
+                    $.each(data.result, function(i, item) {
+                        $("#dest_third").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                    });
+                }
+            });
+        });
+    });
+    //获取表单数据
+    $("#subbtn").click(function(){
+        var data = {};
+        var t = $('#form').serializeArray();
+        var origin_first = $('#origin_first').val();
+        var origin_second = $('#origin_second').val();
+        var dest_first = $('#dest_first').val();
+        var dest_second = $('#dest_second').val();
+        var freight = $('#freight').val();
+        //起始省
+        if (origin_first == 0) {
+            $('#origin_first_span').html('请选择');
+            return false;
+        }
+        //起始市
+        if (origin_second == 0 && origin_first != 900000) {
+            $('#origin_second_sapn').html('请选择');
+            return false;
+        }
+        //终点省
+        if (dest_first == 0) {
+            $('#dest_first_span').html('请选择');
+            return false;
+        }
+        //终点市
+        if (dest_second == 0 && origin_first != 900000) {
+            $('#dest_second_span').html('请选择');
+            return false;
+        }
+
+        //价格
+        var pattern  = /^[1-9]\d*$/;
+        if (!freight) {
+            $('#freight_span').html('请填写');
+            return false;
+        }else if (!pattern.test(freight)){
+            $('#freight_span').html('请填写正整数');
+            return false;
+        }else {
+            $('#freight_span').html('')
+        }
+        $.each(t, function() {
+            data [this.name] = this.value;
+        });
+        $.ajax({
+            type: "post",
+            url: "index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.adddata",
+            data: {"data":data},
+            dataType: "json",
+            success: function(data) {
+                if (data['status'] == 0) {
+                    $("#sub_span").html('');
+                    $("#subbtn").after("<span id='sub_span' style='color: green'>添加成功</span>");
+                }else {
+                    $("#sub_span").html('');
+                    $("#subbtn").after("<span id='sub_span' style='color: red'>信息已存在</span>");
+                }
+            }
+        })
+
+    });
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+            ,form = layui.form;
+        $('#map').click(function(){
+            var origin_first = $('#origin_first option:selected').text();
+            var origin_second = $('#origin_second option:selected').text();
+            var origin_third = $('#origin_third option:selected').text();
+            var dest_first = $('#dest_first option:selected').text();
+            var dest_second = $('#dest_second option:selected').text();
+            var dest_third = $('#dest_third option:selected').text();
+            var strategy = $("input[name='strategy']:checked").val();
+            var choose ='';
+            if(strategy == 'LEAST_TIME') {
+                choose = '最快捷模式'
+            }else if(strategy == 'LEAST_FEE') {
+                choose = '最经济模式'
+            }else {
+                choose = '最短距离模式'
+            }
+            if (origin_first == '钓鱼岛' || dest_first == '钓鱼岛') {
+                $('#map_span').html("当前路线无法驾车到达")
+                return false;
+            }
+            //起始省
+            if (origin_first == '请选择省') {
+                $('#origin_first_span').html('请选择');
+                return false;
+            }else if (origin_second == '请选择市' && origin_first != "钓鱼岛") {
+                console.log(origin_second);
+                //起始市
+                $('#origin_second_sapn').html('请选择');
+                return false;
+            }else if (dest_first == '请选择省') {
+                //终点省
+                $('#dest_first_span').html('请选择');
+                return false;
+            }else if (dest_second == '请选择市' && dest_first != "钓鱼岛") {
+                //终点市
+                $('#dest_second_span').html('请选择');
+                return false;
+            }else {
+                layer.open({
+                    title: choose,
+                    btn: ['最快捷模式', '最经济模式', '最短距离模式'],
+                    yes: function(index, layero){
+                        //按钮【按钮一】的回调
+                       return false;
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    }
+                    ,btn2: function(index, layero){
+                        //按钮【按钮二】的回调
+                        return false;
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    }
+                    ,btn3: function(index, layero){
+                        //按钮【按钮三】的回调
+                        return false;
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    },
+                    content: "<iframe name='test' width='100%' height='100%' src='http://wuliu.com/web/index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.map&origin_second=" + origin_second + "&origin_third=" + origin_third + "&dest_second=" + dest_second + "&dest_third=" + dest_third + "&strategy=\" + strategy'  class='map_list'></iframe>",
+                    area: ['70%', '50%']
+                });
+                //调用地图页面
+                //window.open("index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.map&origin_second=" + origin_second + "&origin_third=" + origin_third + "&dest_second=" + dest_second + "&dest_third=" + dest_third + "&strategy=" + strategy);
+                //$('.map_list').removeAttr('style');
+                //$('.map_list').attr("src","http://wuliu.com/web/index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.map&origin_second=" + origin_second + "&origin_third=" + origin_third + "&dest_second=" + dest_second + "&dest_third=" + dest_third + "&strategy=" + strategy);
+            }
+
+        })
+
+    });
+
+
+</script>
+{template '_footer'}

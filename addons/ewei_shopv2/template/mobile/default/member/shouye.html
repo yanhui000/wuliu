@@ -1,0 +1,279 @@
+{template '_header'}
+
+<style>
+
+     .fui-list-group-title.lineblock2:before{
+
+        content: "";
+
+        position: absolute;
+
+        left: .5rem;
+
+        bottom: 0;
+
+        right: .5rem;
+
+        height: 1px;
+
+        border-top: 1px solid #ebebeb;
+
+        -webkit-transform-origin: 0 100%;
+
+        -ms-transform-origin: 0 100%;
+
+        transform-origin: 0 100%;
+
+        -webkit-transform: scaleY(0.5);
+
+        -ms-transform: scaleY(0.5);
+
+        transform: scaleY(0.5);
+
+    }
+
+.fahuo{width: 100%; overflow: hidden; margin: 0.35rem 0; border-radius: .2rem;border:1px solid #fff;}
+.fahuo li{ float: left; width: 50%; list-style: none; border-right:1px solid #fff;padding: 0.2rem 0; font-size: .6rem}
+.fahuo li.current{ background-color: #fff; color: #FA871D }
+.yicang{ display: none; }
+.fahuoA{ background-color: #FA871D; color: #fff; font-size: 1rem; padding:.6rem 2rem; display: inline-block; border-radius: .2rem;position: absolute; left: 50%; bottom: 15%;transform: translate(-50%, -50%); }
+.shaixuan{ width: 100%; overflow: hidden; background-color: #fff;border-bottom: 1px solid #E3E3E3;}
+.shaixuan li{ list-style: none; float: left; width: 25%; text-align: center; margin: .6rem 0; font-size: .7rem}
+.sxatr{ padding-right: .4rem }
+.city{ background-color: #fff; padding: .6rem 0}
+.citydq{ overflow: hidden; margin: 0 4% 4%}
+.citydqp{ float: left; }
+.citydqa{ float: right;}
+.cityxiaji{ overflow: hidden; margin: 0 3% }
+.cityxiaji li{ float: left; border: 1px solid #ccc; width: 23%; list-style: none; text-align: center; margin: 1%; padding: .4rem 0; font-size: .75rem}
+.cityxiaji li.moren{  border: 1px solid #FA871D; color: #FA871D }
+.shaiqie{width: 100%;position: absolute;/*height: 100%;  background-color: #fff;z-index: 10;*/}
+.paixu{ overflow: hidden; background-color: #fff}
+.paixu li{ float: left; width: 100%; overflow: hidden; border-bottom: 1px solid #E3E3E3; padding: .4rem}
+.paixu li.moren2{color: #FA871D}
+.paixu li .span1{ float: left; }
+.paixu li .span2{ float: right; }
+.container { height: 100%;width: 100%;position: fixed;background-color: #999;opacity: 0.5;/*display: none;*/z-index: 10;}
+.art{ position: absolute; width: 100%; z-index: 20 }
+.radbox{ overflow: hidden; }
+.shaiform{background-color: #f3f3f3; position: fixed; height: 100%; overflow: auto;width: 100%; background-color: #fff;}
+.boxlei{ margin-bottom: .4rem; background-color: #fff;padding: .4rem; }
+.biao{ padding:1%}
+.rad input{ display: none;}
+.rad input:checked+label{color: #FA871D;border: 1px solid #FA871D;}
+.rad label{float: left;border: 1px solid #ccc;width: 23%;list-style: none;text-align: center;margin: 1%;padding: .4rem 0;font-size: .75rem;}
+.butform{ width: 100%;overflow: hidden; position: fixed; bottom: 0}
+.butform button{ width: 50%; float: left; font-size: .75rem; background-color: #FA871D; border: none; padding: .6rem 0; color: #fff }
+</style>
+<script type="text/javascript">
+    $(function(){
+        var $lis=$(".fahuo li");
+        $lis.click(function(){
+            $(this).addClass("current").siblings().removeClass("current");
+            var index=$lis.index(this);
+            console.log(index);
+            $(".qiehuan section").eq(index).show().siblings().hide();
+        });
+        var $shai=$(".shaixuan li");
+        $shai.click(function(){
+            var index=$shai.index(this);
+            // $('.tog').show();
+            $(".shaiqie article").eq(index).toggle().siblings().hide(); 
+            // $('.shaiqie article div.container').toggle(); 
+        });
+        $('.cityxiaji li').click(function(){
+        	$(this).addClass('moren');
+        	$(this).siblings().removeClass("moren");
+        	$(this).parent().parent().parent().hide();
+        	var neirong=$(this).text();
+        	$(".shaixuan li").find('span.sxatr').text()
+            var index2=$(this).parent().parent().parent().index();
+            console.log(index2);
+            $(".shaixuan li").eq(index2).find('span.sxatr').text(neirong);
+            // $('.container').hide();
+        });
+        $('.paixu li').click(function(){
+        	$(this).addClass('moren2');
+        	$(this).siblings().removeClass("moren2");
+        	$(this).parent().parent().hide();
+        	var neirong=$(this).find('span.span1').text();
+        	$(".shaixuan li").find('span.sxatr').text();
+            var index2=$(this).parent().parent().index();
+            console.log(index2);
+            $(".shaixuan li").eq(index2).find('span.sxatr').text(neirong);
+        });
+        $('.container').click(function(){
+        	$('.shaiqie article').hide();
+        	// $(this).hide();
+        });
+
+    })
+</script>
+<div class='fui-page order-list-page'>
+    <div class="fui-header">
+        <div class="fui-header-left">
+
+           <!--  <a class="" style="position: relative;">消息<span class="badge2">13</span></a> -->
+
+        </div>
+
+        <div class="title2" style="width: 40%; margin: 0 30%">
+        	<ul class="fahuo">
+        		<li class="current">当天货源</li>
+        		<li>配货大厅</li>
+        	</ul>
+        </div>
+
+        <!-- <div class="fui-header-right">
+
+            <a class="icon icon-delete external"><span class="icon icon-search2" style="font-size: 1rem; color: #fff"></span></a>
+
+        </div> -->
+
+    </div>
+	<div class='fui-content' style="top: 2.2rem">
+	<!-- 	<div class="tog"></div> -->
+		<div class="qiehuan">
+			<section>
+				<ul class="shaixuan">
+					<li><span class="sxatr">出发地</span><span class="icon icon-unfold"></span>
+					</li>
+					<li><span class="sxatr">目的地</span><span class="icon icon-unfold"></span></li>
+					<li style="border: none;"><span class="sxatr">智能排序</span><span class="icon icon-unfold"></span></li>
+					<li><span class="sxatr">筛选</span><span class="icon icon-unfold"></span></li>
+				</ul>
+				<div class="shaiqie">
+					<article class="yicang">
+						<div class="container"></div>
+						<div class="city art">
+							<!-- <div class="citydq">
+								<p class="citydqp">选择：济南</p>
+								<a href="#" class="citydqa">返回上一级</a>
+							</div> -->
+							<ul class="cityxiaji">
+								<li>全市1</li>
+								<li>莱芜区</li>
+								<li>钢城区</li>
+								<li>章丘区</li>
+							</ul>
+						</div>
+					</article>
+					<article class="yicang">
+						<div class="container"></div>
+						<div class="city art">
+							<!-- <div class="citydq">
+								<p class="citydqp">选择：济南</p>
+								<a href="#" class="citydqa">返回上一级</a>
+							</div> -->
+							<ul class="cityxiaji">
+								<li>全市2</li>
+								<li>莱芜区</li>
+								<li>钢城区</li>
+								<li>章丘区</li>
+							</ul>
+						</div>
+					</article>
+					<article class="yicang">
+						<div class="container"></div>
+						<ul class="paixu art">
+							<li class="moren2"><span class="span1">智能排序</span><span class="icon icon-check span2"></span></li>
+							<li><span class="span1">默认排序</span><span class="icon icon-check span2"></span></li>
+							<li><span class="span1">距离排序</span><span class="icon icon-check span2"></span></li>
+						</ul>
+					</article>
+					<article class="yicang">
+						<form class="shaiform art">
+							<div style="margin-bottom: 8rem">
+								<div class="boxlei">
+									<p class="biao">货源类型</p>
+									<div class="radbox">
+										<div class="rad">
+											<input type="radio" name="" id="lei1">
+											<label for="lei1">不限类型</label>
+										</div>
+										<div class="rad">
+											<input type="radio" name="" id="lei2">
+											<label for="lei2">满运宝</label>
+										</div>
+										<div class="rad">
+											<input type="radio" name="" id="lei2">
+											<label for="lei2">满运宝</label>
+										</div>
+										<div class="rad">
+											<input type="radio" name="" id="lei2">
+											<label for="lei2">满运宝</label>
+										</div>
+									</div>								
+								</div>
+							</div>
+							<div class="butform">
+								<button style="background-color: #fff; color: #333">重置</button>
+								<button>确认</button>
+							</div>
+						</form>
+					</article>
+				</div>
+				<div>444</div>
+				<div class='content-empty' style="position: absolute; left: 50%; top: 50%;transform: translate(-50%, -50%); margin-top: 0">
+					<p style="color: #999;font-size: .75rem"><span class="icon icon-location"></span><span>请选择出发地城市，至少选到省份级别</span></p>
+		        </div>
+			</section>
+			<section class="yicang">
+				<div class="fui-cell-group fui-cell-click" style="margin-top: 0">
+		 			<a class="fui-cell" href="">
+						<div class="fui-cell-text"><p></p></div>
+						<div class="fui-cell-remark" style="color: #727272">
+							播报记录
+						</div>
+					</a>
+				</div>	
+				<style type="text/css">
+					.order-list-page .fui-list-media img{width: 2rem!important; height: 2rem!important}
+				</style>
+				<div class="fui-list-group" id="container" style="padding: .4rem 0; margin-top: .1rem">
+					<p style="padding: .4rem .6rem;color: #9A9A9A; font-size: .8rem">添加常跑的路线，可以：</p>
+					<div class="fui-list" style="height: 3.5rem">
+						<div class="fui-list-media">
+							<!-- <i class="icon icon-my2"></i> -->
+							<img src="../addons/ewei_shopv2/template/mobile/default/static/images/peihuo1.png">
+						</div>
+						<div class="fui-list-inner">
+							<div class="row">
+							    <div class="row-text" style="font-size: .8rem">实行声音提醒  </div>
+							</div>
+							<div class="subtitle" style="color: #9A9A9A">有新的货源第一时间声音提醒您</div>
+						</div>
+					</div>
+					<div class="fui-list" style="height: 3.5rem">
+						<div class="fui-list-media">
+							<!-- <i class="icon icon-my2"></i> -->
+							<img src="../addons/ewei_shopv2/template/mobile/default/static/images/peihuo2.png">
+						</div>
+						<div class="fui-list-inner">
+							<div class="row">
+							    <div class="row-text" style="font-size: .8rem">快速找货  </div>
+							</div>
+							<div class="subtitle" style="color: #9A9A9A">方便随时查找长跑路线货源</div>
+						</div>
+					</div>
+					<div class="fui-list" style="height: 3.5rem">
+						<div class="fui-list-media">
+							<!-- <i class="icon icon-my2"></i> -->
+							<img src="../addons/ewei_shopv2/template/mobile/default/static/images/peihuo3.png">
+						</div>
+						<div class="fui-list-inner">
+							<div class="row">
+							    <div class="row-text" style="font-size: .8rem">多条路线查找  </div>
+							</div>
+							<div class="subtitle" style="color: #9A9A9A">可同时添加10条常跑路线</div>
+						</div>
+					</div>
+					<a href="{php echo mobileUrl('member/changroute')}" class="btn btn-danger block">立即添加路线</a>
+				</div>		
+			</section>
+		</div>
+       	
+    </div>
+    {php $this->footerMenus()}
+</div>
+{template '_footer'}

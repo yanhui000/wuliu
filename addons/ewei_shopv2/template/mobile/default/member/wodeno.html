@@ -1,0 +1,82 @@
+{template '_header'}
+<style>
+	.fui-icon-col.external.before:before{
+		content: '';
+		position: absolute;
+		top: 1rem;
+		bottom: 1rem;
+		left: 0;
+		width: 1px;
+		background-color: #ebebeb;
+		display: block;
+		z-index: 15;
+	}
+.fui-icon-group.col-5 .fui-icon-col{width: 25%!important}
+.member-page .fui-icon-group .fui-icon-col .icon{height: 1.4rem!important;line-height: 1.4rem!important;}
+.fui-icon-group .fui-icon-col .icon img{ width: 1.4rem!important; height: 1.4rem!important }
+.fui-cell-group .fui-cell .fui-cell-remark:after{border-color:#FA871D!important;}
+</style>
+<div class='fui-page  fui-page-current'>
+    <!-- <div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back" onclick='location.back()'></a>
+		</div>
+		<div class="title">会员中心</div>
+		<div class="fui-header-right"></div>
+	</div> -->
+	<div class='fui-content member-page navbar' style="top:0">
+		<div style="overflow: hidden;background: #FA871D;">
+			<div class="headinfo" style="z-index:100;border: none;">
+			    <div class="userinfo" style="height: auto; width:100%">
+					<div class="fui-list">
+						<div class="fui-list-media"><img src="{$member['avatar']}" onerror="this.src='../addons/ewei_shopv2/static/images/noface.png'" style="width: 3rem; height: 3rem;border-radius: 50%;" /></div>
+						<div class="fui-list-info" style="width: 12rem">
+						<div class="title"> </div>
+							<div class="text" style="color: #fff; font-size: 1rem">
+								<span style="vertical-align: middle;">176****0098</span><span style="font-size: .7rem; border:1px solid #fff; padding: .1rem; margin-left: .6rem; vertical-align: middle;">未认证</span>
+							</div>
+							<div class="subtitle" style="color: #fff">
+								认证后可发货找司机
+							</div>
+						</div>
+					</div>
+					<!-- <a class="setbtn external" href="{php echo mobileUrl('member/info')}"><i class="icon icon-shezhi"></i></a> -->
+				</div>
+			</div>
+			<a href="{php echo mobileUrl('member/idrenzheng')}" style="margin:1rem .6rem; color: #fff; display: block; font-size: .8rem">仅需身份证认证即可认证，点击认证></a>
+		</div>
+    <div class="fui-cell-group fui-cell-click" style="margin-top: 0;margin-bottom: .5rem">
+		<a class="fui-cell external" href="{php echo mobileUrl('member/idrenzheng')}" style="background-color: #FFF7EA; padding: .6rem; margin: .6rem">
+			<div class="fui-cell-icon"><i class="icon icon-infofill" style="color: #FA871D"></i></div>
+			<div class="fui-cell-text" style="color: #FA871D"><p>立即认证</p></div>
+			<div class="fui-cell-remark" style="color: #FA871D">去完善</div>
+		</a>
+	</div>
+	<div class="fui-cell-group fui-cell-click" style="margin-top: 0; padding-top: .6rem">
+		<!-- <div class="fui-cell external" href="{php echo mobileUrl('order')}">
+			<div class="fui-cell-text" style="font-size: .8rem;">我的服务</div>
+		</div> -->
+		{php $check_cycelbuy=p('cycelbuy')}
+		<div class="fui-icon-group selecter {if $check_cycelbuy}col-5{else}col-4{/if}">
+			<a class="fui-icon-col external" href="{php echo mobileUrl('member/kehufuwu')}">
+				<div class="icon icon-green radius"><img src="../addons/ewei_shopv2/template/mobile/default/static/images/fuwu2.png"></div>
+				<div class="text">客服服务</div>
+			</a>
+			<a class="fui-icon-col external" href="{php echo mobileUrl('member/licheng')}">
+				<div class="icon icon-pink radius"><img src="../addons/ewei_shopv2/template/mobile/default/static/images/fuwu7.png"></div>
+				<div class="text">里程计算</div>
+			</a>
+			<a class="fui-icon-col external" href="{php echo mobileUrl('member/yijian')}">
+				<div class="icon icon-blue radius"><img src="../addons/ewei_shopv2/template/mobile/default/static/images/fuwu4.png"></div>
+				<div class="text">意见反馈</div>
+			</a>
+			<a class="fui-icon-col external" href="">
+				<div class="icon icon-pink radius"><img src="../addons/ewei_shopv2/template/mobile/default/static/images/fuwu1.png"></div>
+				<div class="text">更多设置</div>
+			</a>			
+		</div>
+	</div>		
+	</div>
+</div>
+{php $this->footerMenus()}
+{template '_footer'}

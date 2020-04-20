@@ -1,0 +1,63 @@
+{template '_header'}
+
+<style>
+
+     .fui-list-group-title.lineblock2:before{
+
+        content: "";
+
+        position: absolute;
+
+        left: .5rem;
+
+        bottom: 0;
+
+        right: .5rem;
+
+        height: 1px;
+
+        border-top: 1px solid #ebebeb;
+
+        -webkit-transform-origin: 0 100%;
+
+        -ms-transform-origin: 0 100%;
+
+        transform-origin: 0 100%;
+
+        -webkit-transform: scaleY(0.5);
+
+        -ms-transform: scaleY(0.5);
+
+        transform: scaleY(0.5);
+
+    }
+</style>
+<div class='fui-page order-list-page'>
+
+    <div class="fui-header">
+
+        <div class="fui-header-left">
+
+            <a class="" style="position: relative;">清空未读</a>
+
+        </div>
+
+        <div class="title">
+        	通话记录
+        </div>
+
+        <div class="fui-header-right">
+
+            <a class="icon icon-delete external" >设置</a>
+
+        </div>
+
+    </div>
+	<div class='fui-content' style="top: 2.2rem">
+		<div class='content-empty' style="position: absolute; left: 50%; top: 50%;transform: translate(-50%, -50%); margin-top: 0">
+			<img src="{EWEI_SHOPV2_STATIC}images/callrecords.png" style="width: 6rem;margin-bottom: .5rem;"><br/><p style="color: #999;font-size: .75rem">没有消息</p>
+        </div>
+    </div>
+    {php $this->footerMenus()}
+</div>
+{template '_footer'}

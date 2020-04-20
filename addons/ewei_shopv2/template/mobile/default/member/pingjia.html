@@ -1,0 +1,132 @@
+{template '_header'}
+<link rel='stylesheet' href='../addons/ewei_shopv2/template/mobile/default/static/css/pingjia/all.min.css'>
+<link rel="stylesheet" href="../addons/ewei_shopv2/template/mobile/default/static/css/pingjia/style.css">
+<script type="text/javascript">
+    $(function(){
+        var $lis=$(".pingUl li");
+        $lis.click(function(){
+            $(this).addClass("cur").siblings().removeClass("cur");
+            var index=$lis.index(this);
+            console.log(index);
+            $(".qiehuan section").eq(index).show().siblings().hide();
+        });
+        var $lis2=$(".pingUl2 li");
+        $lis2.click(function(){
+            $(this).addClass("cur2").siblings().removeClass("cur2");
+            var index=$lis2.index(this);
+            console.log(index);
+            $(".qiehuan2 article").eq(index).show().siblings().hide();
+        });
+    })
+</script>
+<style>
+    .fui-header{ background-color: #fff!important; }
+    .fui-header a.back:before{ border-color: #FA871D!important }
+    .fui-header .title{ color: #000!important }
+    .fui-cell-group .fui-cell .fui-cell-icon{
+        width: auto;
+    }
+    .fui-cell-group .fui-cell .fui-cell-icon img{
+        width: 2rem;
+        height: 2rem;
+    }
+    .fui-cell-group .fui-cell.no-border{
+        padding-top: 0;
+    }
+    .fui-cell-group .fui-cell.no-border .fui-cell-info{
+        font-size: .6rem;
+        color: #999;
+    }
+    .fui-cell-group .fui-cell.applyradio  .fui-cell-info{
+        line-height: normal;
+    }
+    .pingUl{ overflow: hidden; width: 100%; background-color: #fff }
+    .pingUl li{ float: left; width: 50%; text-align: center; list-style: none;height: 2rem; line-height: 2rem}
+    .pingUl li.cur{ color: #FA871D; border-bottom: 2px solid #FA871D }
+    .yicang{ display: none; }
+    .pingTop{ overflow: hidden; background-color: #fff; padding: .8rem 0 .6rem}
+    .topLe{ float: left; width: 35%; text-align: center; border-right: 2px solid #E3E3E3}
+    .topLe p{ padding: .1rem 0 }
+    .topRi{ float: left;width: 65%; padding-left: 10% }
+    .pingUl2{ overflow: hidden; width: 100%; background-color: #fff; margin-top: .5rem }
+    .pingUl2 li{ float: left; width: 20%; text-align: center; list-style: none;padding: .4rem 0; }
+    .pingUl2 a{ float: left; width: 20%; text-align: center; list-style: none;padding: .4rem 0; }
+    .pingUl2 li.cur2{ color: #FA871D; border-bottom: 2px solid #FA871D }
+    .shuwu{text-align: center; padding: .4rem 0; color: #999}
+</style>
+<div class='fui-page  fui-page-current'>
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">我的评价</div>
+        <div class="fui-header-right"><a href="" style="color: #333">评价介绍</a></div>
+    </div>
+    <div class='fui-content'>
+        <ul class="pingUl">
+            <li class="cur">收到的评价</li>
+            <li>发表的评价</li>
+        </ul>
+        <div class="qiehuan">
+            <section>
+                <div class="pingTop">
+                    <div class="topLe">
+                        <p style="color: #FA871D"><span style="font-size: 1rem">0</span>%</p>
+                        <p style="font-size: .6rem;color: #FA871D">好评率</p>
+                        <p style="font-size: .55rem; color: #8B8B8B">0条评价</p>
+                    </div>
+                    <div class="topRi">
+                        <div class="review">
+                            <span class="icon-container">好评</span>
+                            <div class="progress">
+                                <div class="progress-done" data-done="0" ></div>
+                            </div>                           
+                            <span>0</span>
+                        </div>
+                        <div class="review">
+                            <span class="icon-container">中评</span>
+                            <div class="progress">
+                                <div class="progress-done" data-done="70" ></div>
+                            </div>                           
+                            <span>70</span>
+                        </div>
+                        <div class="review">
+                            <span class="icon-container">差评</span>
+                            <div class="progress">
+                                <div class="progress-done" data-done="30" ></div>
+                            </div>                           
+                            <span>30</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pingUl2">
+                    <li class="cur2">全部</li>
+                    <li>好评</li>
+                    <li>中评</li>
+                    <li>差评</li>
+                    <a href="" style="font-size: .65rem;">申诉记录</a>
+                </ul>
+                <div class="qiehuan2">
+                    <article>
+                        <p class="shuwu">暂无数据！</p>
+                    </article>
+                    <article class="yicang">
+                        <p class="shuwu">暂无数据！</p>
+                    </article>
+                    <article class="yicang">
+                        <p class="shuwu">暂无数据！</p>
+                    </article>
+                    <article class="yicang">
+                        <p class="shuwu">暂无数据！</p>
+                    </article>
+                </div>
+            </section>
+            <section class="yicang">
+                <p class="shuwu">暂无数据！</p>
+            </section>
+        </div>
+    </div>
+</div>
+<script  src="../addons/ewei_shopv2/template/mobile/default/static/js/script.js"></script>
+{template '_footer'}
+<!--913702023503242914-->

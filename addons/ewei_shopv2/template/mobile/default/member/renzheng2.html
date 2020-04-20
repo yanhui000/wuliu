@@ -1,0 +1,113 @@
+{template '_header'}
+<script type="text/javascript">
+    $(function(){
+        var $lis=$("#cateTab a");
+        $lis.click(function(){
+	        $(this).addClass("active").siblings().removeClass("active");
+	        var index=$lis.index(this);
+	        console.log(index);
+	        $(".qiehuan section").eq(index).show().siblings().hide();
+    	});
+    })
+</script>
+<style type="text/css">
+	.fui-header{ background-color: #fff!important; }
+	.fui-header a.back:before{ border-color: #FA871D!important }
+	.fui-header .title{ color: #000!important }
+	.shuoming{padding: 0.75rem 0.6rem 0.65rem; background-color: #fff; color: #FB5925;border-bottom: 1px solid #D9D9D9;}
+/*	.fui-cell-group{margin: 0.5rem 0.6rem!important}*/
+	[class*="icheck-"] > input:first-child + label::before, [class*="icheck-"] > input:first-child + input[type="hidden"] + label::before{border-radius: 50%!important;border: 1px solid #569EE7!important; vertical-align: middle;}
+	.tu{ overflow: hidden; padding: 0.75rem 0.6rem 0.65rem; background-color: #fff; margin-bottom: 1rem}
+	.tuLe{ float: left; width: 48%}
+	.tuRi{ float: right; width: 48%}
+	.tu img{ width: 100% }
+	.tu p{ text-align: center; color: #569EE7 }
+</style>
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/coupon-new.css?v=2017030302">
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/icheck-bootstrap.css">
+<div class='fui-page  fui-page-current coupon-my-page'>
+  <div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back"></a>
+		</div>
+		<div class="title">实名认证</div> 
+		<div class="fui-header-right">&nbsp;</div>
+  </div>
+	<div class='fui-content'>
+    <div class="fui-cell-group" style="margin-top: 0;">
+        <div class='fui-cell-title'  style="height: 2.45rem;font-size:.7rem;color:#666;line-height: 1.425rem; background-color: #f3f3f3">请按照提示操作</div>
+         <div class='fui-cell-title'  style="height: 2.45rem;font-size:.7rem;color:#FB5925;line-height: 1.425rem; background-color: #f3f3f3">短信验证码已发送至130****7856，请注意查收</div>
+    </div>
+    <div class="fui-cell-group">
+      <div class="fui-cell" style="padding: 0">
+        <div class="fui-cell-info" style="padding: 0.75rem 0rem 0.65rem 0.6rem"><input type="tel" class="fui-input" id="verifycode" name="verifycode" placeholder="请输入验证码" value="" maxlength="5"></div>
+        <div class="fui-cell-remark noremark" style="line-height: inherit; margin-right: 0"><a class="btn btn-default btn-default-o btn-sm" id="btnCode" style="padding:0.85rem 0.6rem 0.85rem; height: auto; line-height: inherit; border: none; background-color: #FB861D; color: #fff; border-radius:0">获取验证码</a></div>
+      </div>
+      <div class='fui-cell-title'  style="height: 2.45rem;font-size:.7rem;color:#569EE7;line-height: 1.425rem; background-color: #f3f3f3; text-align: right;border-bottom: 1px solid #ebebeb">收不到短信验证码？</div>
+    </div>
+		<div class="fui-cell-group">
+       <div class='fui-cell-title'  style="height: 2.45rem;font-size:.7rem;color:#666;line-height: 1.425rem; background-color: #f3f3f3">设置支付密码</div>
+			<div class="fui-cell">
+				<div class="fui-cell-info c000"><input type="text" class="fui-input" id="realname" name="realname" placeholder="请输入6位数字支付密码" value=""></div>
+			</div>
+      <div class="fui-cell">
+        <div class="fui-cell-info c000"><input type="text" class="fui-input" id="realname" name="realname" placeholder="请再次输入6位数字支付密码" value=""></div>
+      </div>
+      <div class='fui-cell-title'  style="font-size:.7rem;color:#FB5925;line-height: 1.425rem; background-color: #f3f3f3">支付密码用于钱包支付，修改绑定手机号等操作。为了资金安全，请牢记支付密码且不要透露给他人。</div>
+		</div>
+  		<a id='btn-next' class='btn btn-danger block mtop' style="position: absolute; bottom: 0; width: 94%">完成实名认证</a>	
+	</div>
+</div>
+<script>    
+    $("#file0").change(function(){  
+      // getObjectURL是自定义的函数，见下面  
+      // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+      // ，但是这里只读取第一个   
+      var objUrl = getObjectURL(this.files[0]);  
+      // 这句代码没什么作用，删掉也可以  
+      // console.log("objUrl = "+objUrl) ;  
+      if (objUrl) {  
+        // 在这里修改图片的地址属性  
+        $("#img2").attr("src", objUrl);  
+      }  
+    }) ;  
+    $("#file2").change(function(){  
+      // getObjectURL是自定义的函数，见下面  
+      // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+      // ，但是这里只读取第一个   
+      var objUrl = getObjectURL2(this.files[0]) ;  
+      // 这句代码没什么作用，删掉也可以  
+      // console.log("objUrl = "+objUrl) ;  
+      if (objUrl) {  
+        // 在这里修改图片的地址属性  
+        $("#img3").attr("src", objUrl) ;  
+      }  
+    }) ;  
+    //建立一個可存取到該file的url  
+    function getObjectURL(file) {  
+      var url = null ;   
+      // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+      if (window.createObjectURL!=undefined) { // basic  
+        url = window.createObjectURL(file) ;  
+      } else if (window.URL!=undefined) { // mozilla(firefox)  
+        url = window.URL.createObjectURL(file) ;  
+      } else if (window.webkitURL!=undefined) { // webkit or chrome  
+        url = window.webkitURL.createObjectURL(file) ;  
+      }  
+      return url ;  
+    }  
+    function getObjectURL2(file) {  
+      var url = null ;   
+      // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+      if (window.createObjectURL!=undefined) { // basic  
+        url = window.createObjectURL(file) ;  
+      } else if (window.URL!=undefined) { // mozilla(firefox)  
+        url = window.URL.createObjectURL(file) ;  
+      } else if (window.webkitURL!=undefined) { // webkit or chrome  
+        url = window.webkitURL.createObjectURL(file) ;  
+      }  
+      return url ;  
+    }  
+</script>
+{template '_footer'}
+<!--NDAwMDA5NzgyNw==-->

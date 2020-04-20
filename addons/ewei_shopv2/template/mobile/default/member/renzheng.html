@@ -1,0 +1,138 @@
+{template '_header'}
+<script type="text/javascript">
+    $(function(){
+        var $lis=$("#cateTab a");
+        $lis.click(function(){
+	        $(this).addClass("active").siblings().removeClass("active");
+	        var index=$lis.index(this);
+	        console.log(index);
+	        $(".qiehuan section").eq(index).show().siblings().hide();
+    	});
+    })
+</script>
+<style type="text/css">
+	.fui-header{ background-color: #fff!important; }
+	.fui-header a.back:before{ border-color: #FA871D!important }
+	.fui-header .title{ color: #000!important }
+	.shuoming{padding: 0.75rem 0.6rem 0.65rem; background-color: #fff; color: #FB5925;border-bottom: 1px solid #D9D9D9;}
+	.fui-cell-group{margin: 0.5rem 0.6rem!important}
+	[class*="icheck-"] > input:first-child + label::before, [class*="icheck-"] > input:first-child + input[type="hidden"] + label::before{border-radius: 50%!important;border: 1px solid #569EE7!important; vertical-align: middle;}
+	.tu{ overflow: hidden; padding: 0.75rem 0.6rem 0.65rem; background-color: #fff; margin-bottom: 1rem}
+	.tuLe{ float: left; width: 48%}
+	.tuRi{ float: right; width: 48%}
+	.tu img{ width: 100% }
+	.tu p{ text-align: center; color: #569EE7 }
+</style>
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/coupon-new.css?v=2017030302">
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/icheck-bootstrap.css">
+<div class='fui-page  fui-page-current coupon-my-page'>
+    <div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back"></a>
+		</div>
+		<div class="title">实名认证</div> 
+		<div class="fui-header-right">&nbsp;</div>
+    </div>
+	<div class='fui-content'>
+		<p class="shuoming">为了保障你的资金安全，请务必使用本人的身份认证，如果你已注册的姓名不是你本人，请联系客服400-8686686变更为本人</p>
+		<div class="tu">
+			<div class="tuLe">
+				<input type="file" name="file0" id="file0" multiple="multiple" style="display: none;" />
+    			<label for="file0" style="overflow: hidden; display: inline-block; margin-top: 2%">
+    				<img src="../addons/ewei_shopv2/template/mobile/default/static/images/psdimg1.png" id="img2" class="psd"/>
+    				<p>上传身份证正面</p>
+    			</label>
+    		</div>
+    		<div class="tuRi">
+    			<input type="file" name="file0" id="file0" multiple="multiple" style="display: none;" />
+    			<label for="file0" style="overflow: hidden; display: inline-block; margin-top: 2%">
+    				<img src="../addons/ewei_shopv2/template/mobile/default/static/images/psdimg2.png" id="img2" class="psd"/>
+    				<p>上传身份证背面</p>
+    			</label>
+    		</div>	
+		</div>
+		<div class="fui-cell-group">
+			<div class="fui-cell">
+				<div class="fui-cell-label ">真实姓名</div>
+				<div class="fui-cell-info c000"><input type="text" class="fui-input" id="realname" name="realname" placeholder="请输入您的姓名" value="李*"></div>
+			</div>
+
+		</div>
+		<div class="fui-cell-group">			
+			<div class="fui-cell">
+				<div class="fui-cell-label">身份证号</div>
+				<div class="fui-cell-info c000"><input type="text" class="fui-input" id="weixin" name="weixin" placeholder="请输入您的微信号" value="370* **** *546"></div>
+			</div>
+		</div>
+		<div class="fui-cell-group">			
+			<div class="fui-cell">
+				<div class="fui-cell-label">银行卡号</div>
+				<div class="fui-cell-info c000"><input type="text" class="fui-input" id="weixin" name="weixin" placeholder="请输入银行卡号" value=""></div>
+			</div>
+		</div>
+		<div class="fui-cell-group">			
+			<div class="fui-cell">
+				<div class="fui-cell-label">预留手机</div>
+				<div class="fui-cell-info c000"><input type="text" class="fui-input" id="weixin" name="weixin" placeholder="请输入银行预留手机号" value=""></div>
+			</div>
+		</div>
+		<div class="chatbox icheck-peterriver qm-checkbox hide"  style="margin: 0.5rem 0.6rem">
+		    <input type="checkbox" id="peterriver1" name="peterriver" class="fuxuan" />
+		    <label for="peterriver1"><span style="vertical-align: middle;">我已同意并阅读<a href="#" style="color: #569EE7">用户协议</a><span></label>
+  		</div>	
+  		<a id='btn-next' class='btn btn-danger block mtop' style="position: absolute; bottom: 0; width: 94%" href="{php echo mobileUrl('member/renzheng2')}">下一步</a>	
+	</div>
+</div>
+<script>    
+    $("#file0").change(function(){  
+      // getObjectURL是自定义的函数，见下面  
+      // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+      // ，但是这里只读取第一个   
+      var objUrl = getObjectURL(this.files[0]);  
+      // 这句代码没什么作用，删掉也可以  
+      // console.log("objUrl = "+objUrl) ;  
+      if (objUrl) {  
+        // 在这里修改图片的地址属性  
+        $("#img2").attr("src", objUrl);  
+      }  
+    }) ;  
+    $("#file2").change(function(){  
+      // getObjectURL是自定义的函数，见下面  
+      // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+      // ，但是这里只读取第一个   
+      var objUrl = getObjectURL2(this.files[0]) ;  
+      // 这句代码没什么作用，删掉也可以  
+      // console.log("objUrl = "+objUrl) ;  
+      if (objUrl) {  
+        // 在这里修改图片的地址属性  
+        $("#img3").attr("src", objUrl) ;  
+      }  
+    }) ;  
+    //建立一個可存取到該file的url  
+    function getObjectURL(file) {  
+      var url = null ;   
+      // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+      if (window.createObjectURL!=undefined) { // basic  
+        url = window.createObjectURL(file) ;  
+      } else if (window.URL!=undefined) { // mozilla(firefox)  
+        url = window.URL.createObjectURL(file) ;  
+      } else if (window.webkitURL!=undefined) { // webkit or chrome  
+        url = window.webkitURL.createObjectURL(file) ;  
+      }  
+      return url ;  
+    }  
+    function getObjectURL2(file) {  
+      var url = null ;   
+      // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+      if (window.createObjectURL!=undefined) { // basic  
+        url = window.createObjectURL(file) ;  
+      } else if (window.URL!=undefined) { // mozilla(firefox)  
+        url = window.URL.createObjectURL(file) ;  
+      } else if (window.webkitURL!=undefined) { // webkit or chrome  
+        url = window.webkitURL.createObjectURL(file) ;  
+      }  
+      return url ;  
+    }  
+</script>
+{template '_footer'}
+<!--NDAwMDA5NzgyNw==-->

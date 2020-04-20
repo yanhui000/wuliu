@@ -1,0 +1,66 @@
+{template '_header'}
+<style>
+    .fui-header{ background-color: #fff!important; }
+    .fui-header a.back:before{ border-color: #FA871D!important }
+    .fui-header .title{ color: #000!important }
+    .fui-cell-group .fui-cell .fui-cell-icon{
+        width: auto;
+    }
+    .fui-cell-group .fui-cell .fui-cell-icon img{
+        width: 2rem;
+        height: 2rem;
+    }
+    .fui-cell-group .fui-cell.no-border{
+        padding-top: 0;
+    }
+    .fui-cell-group .fui-cell.no-border .fui-cell-info{
+        font-size: .6rem;
+        color: #999;
+    }
+    .fui-cell-group .fui-cell.applyradio  .fui-cell-info{
+        line-height: normal;
+    }
+    .lidiv{ background-color: #fff;  padding: .65rem 0;margin-bottom: .4rem}
+    .lulie{padding: 0rem 0.6rem;}
+    .duoxuan{ overflow: hidden;padding: 0.4rem 0.6rem; }
+    .xuanp{float: left;border: 1px solid #ccc;width: 20%;list-style: none;text-align: center;margin: 1%;padding: .25rem 0;font-size: .75rem;}
+    .xuanp span{ vertical-align: middle; font-size: .75rem}
+</style>
+<div class='fui-page  fui-page-current'>
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">添加常用路线
+        </div>
+        <div class="fui-header-right">&nbsp;</div>
+    </div>
+    <div class='fui-content'> 
+        <form>
+            <div class="lidiv">
+                <p class="lulie" style="border-left: 3px solid #6ACD34">选择出发地(最多3个)</p>
+                <div class="duoxuan">
+                    <p class="xuanp"><span class="icon icon-add"></span><span>选择</span></p>
+                </div>
+
+            </div>
+            <div class="lidiv">
+                <p class="lulie" style="border-left: 3px solid #E15145">选择出发地(最多3个)</p>
+                <div class="duoxuan">
+                    <p class="xuanp"><span class="icon icon-add"></span><span>选择</span></p>
+                </div>
+            </div>
+            <div class="fui-cell-group fui-cell-click">
+                <div class="fui-cell">
+                    <div class="fui-cell-icon"><i class="icon icon-daifahuo1"></i></div>
+                    <div class="fui-cell-text" style="color: #CFCFCF"><p>需要的车厂车型</p></div>
+                    <div class="fui-cell-remark"></div>
+                </div>
+            </div>
+            <input type="submit" name="" class="btn btn-danger block" value="确定" style="width: 94%; margin:5% 3%">
+        </form>
+    </div>
+</div>
+
+{template '_footer'}
+<!--913702023503242914-->
