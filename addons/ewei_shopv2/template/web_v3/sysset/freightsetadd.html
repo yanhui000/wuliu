@@ -304,22 +304,6 @@
             }else {
                 layer.open({
                     title: choose,
-                    btn: ['最快捷模式', '最经济模式', '最短距离模式'],
-                    yes: function(index, layero){
-                        //按钮【按钮一】的回调
-                       return false;
-                        //return false 开启该代码可禁止点击该按钮关闭
-                    }
-                    ,btn2: function(index, layero){
-                        //按钮【按钮二】的回调
-                        return false;
-                        //return false 开启该代码可禁止点击该按钮关闭
-                    }
-                    ,btn3: function(index, layero){
-                        //按钮【按钮三】的回调
-                        return false;
-                        //return false 开启该代码可禁止点击该按钮关闭
-                    },
                     content: "<iframe name='test' width='100%' height='100%' src='http://wuliu.com/web/index.php?c=site&a=entry&m=ewei_shopv2&do=web&r=sysset.map&origin_second=" + origin_second + "&origin_third=" + origin_third + "&dest_second=" + dest_second + "&dest_third=" + dest_third + "&strategy=\" + strategy'  class='map_list'></iframe>",
                     area: ['70%', '50%']
                 });

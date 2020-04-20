@@ -202,50 +202,6 @@ class Index_EweiShopV2Page extends WebPage
 		include $this->template('sysset/map');
 	}
 
-	//搜索
-	public function soso(){
-		global $_W;
-		global $_GPC;
-		if ($_W['ispost']) {
-			$_GPC['enabled'];
-			$_GPC['keyword'];
-			$id = pdo_fetchall("SELECT * FROM ".tablename('area') . "where name = :uid" , array('uid' => $_GPC['keyword']));
-			//0  起始位置   1  终点位置   2   运费
-			if ($_GPC['enabled'] == 0 || $_GPC['enabled'] == 1){
-				$addressInfo = pdo_fetchall("SELECT * FROM ".tablename('cargo_freight') . "where f_origin_pro = :uf_freight_pro" , array('uf_freight_pro' => $id[0]['id']));
-				if (!$addressInfo){
-					$addressInfo = pdo_fetchall("SELECT * FROM ".tablename('cargo_freight') . "where f_origin_city = :uf_freight_city" , array('uf_freight_city' => $id[0]['id']));
-					if (!$addressInfo) {
-						$addressInfo = pdo_fetchall("SELECT * FROM ".tablename('cargo_freight') . "where f_origin_county = :uf_freight_county" , array('uf_freight_county' => $id[0]['id']));
-						if (!$addressInfo) {
-							$addressInfo = pdo_fetchall("SELECT * FROM ".tablename('cargo_freight') . "where f_des_pro = :uf_des_pro" , array('uf_des_pro' => $id[0]['id']));
-							if (!$addressInfo) {
-								$addressInfo = pdo_fetchall("SELECT * FROM ".tablename('cargo_freight') . "where f_des_city = :uf_des_city" , array('uf_des_city' => $id[0]['id']));
-								if (!$addressInfo) {
-									$addressInfo = pdo_fetchall("SELECT * FROM ".tablename('cargo_freight') . "where f_des_county = :uf_des_county" , array('uf_des_county' => $id[0]['id']));
-								}
-							}
-						}
-					}
-				}
-			}else{
-				$addressInfo = pdo_fetchall("SELECT * FROM ".tablename('cargo_freight') . "where f_freight = :uf_freight" , array('uf_freight' => $_GPC['keyword']));
-			}
-			if (!empty($addressInfo)) {
-				//处理 省市区
-				foreach ($addressInfo as $k => $v) {
-					$addressInfo['f_origin_pro'] = pdo_fetchall("SELECT name FROM" . tablename('area') . "where id = :uid" , array(':uid' => $v['f_origin_pro']));
-					$addressInfo['f_origin_city'] = pdo_fetchall("SELECT name FROM" . tablename('area') . "where id = :uid" , array(':uid' => $v['f_origin_city']));
-					$addressInfo['f_origin_county'] = pdo_fetchall("SELECT name FROM" . tablename('area') . "where id = :uid" , array(':uid' => $addressInfo['f_origin_county']));
-					$addressInfo['f_des_pro'] = pdo_fetchall("SELECT name FROM" . tablename('area') . "where id = :uid" , array(':uid' => $v['f_des_pro']));
-					$addressInfo['f_des_city'] = pdo_fetchall("SELECT name FROM" . tablename('area') . "where id = :uid" , array(':uid' => $v['f_des_city']));
-					$addressInfo['f_des_county'] = pdo_fetchall("SELECT name FROM" . tablename('area') . "where id = :uid" , array(':uid' => $v['f_des_county']));
-				}
-				show_json(0,$addressInfo);
-			}
-			show_json(1);
-		}
-	}
 
 	//删除
 	public function del(){
